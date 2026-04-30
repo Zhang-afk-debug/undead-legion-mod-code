@@ -1,0 +1,59 @@
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+
+# Files from Forge MDK
+forge*changelog.txt
+
+# 编译输出
+build/
+.gradle/
+bin/
+out/
+
+# 运行生成
+run/
+logs/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# Gradle wrapper jar
+gradle/wrapper/gradle-wrapper.jar
+
+# 本地配置（含 JDK 路径）
+gradle.properties
+
+# 产物
+*.jar
+*.zip
+
+# 临时文件
+*.log
+*.bak
+*.swp
+*~
