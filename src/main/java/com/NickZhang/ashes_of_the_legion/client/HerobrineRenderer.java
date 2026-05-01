@@ -29,7 +29,8 @@ public class HerobrineRenderer extends MobRenderer<Herobrine, HumanoidModel<Hero
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(@NotNull Herobrine entity) {
+    public @NotNull ResourceLocation getTextureLocation(@NotNull Herobrine entity)
+    {
         return TEXTURE;
     }
 }
