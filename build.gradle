@@ -3,6 +3,7 @@ plugins {
     id 'idea'
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7.+'
 }
 
 version = mod_version
@@ -119,7 +120,40 @@ repositories {
     // See https://docs.gradle.org/current/userguide/declaring_repositories.html#sub:flat_dir_resolver
     // flatDir {
     //     dir 'libs'
-    // }
+    // }]}
+    maven {
+        name = 'GeckoLib'
+        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        content {
+            includeGroupByRegex("software\\.bernie.*")
+            includeGroup("com.eliotlash.mclib")
+        }
+    }
+    //Patchouli Maven仓库
+    maven {
+        url 'https://maven.blamejared.com'
+        name = 'BlameJared Maven'
+    }
+    //CuriosAPI Maven仓库
+    maven {
+        url = 'https://maven.theillusivec4.top/'
+        name = 'IllusiveC4 Maven'
+    }
+    maven {
+        name = "Curse Maven"
+        url = "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    maven {
+        name = "Curse Maven"
+        url = "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+
 }
 
 dependencies {
@@ -144,6 +178,19 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+    //geckolib前置声明
+    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-1.20.1:4.8.3")
+    implementation("com.eliotlash.mclib:mclib:20")
+    //patchouli前置声明
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.20.1-84.1-FORGE:api")
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.20.1-84.1-FORGE")
+    //curios API前置声明
+    implementation fg.deobf("top.theillusivec4.curios:curios-forge:5.7.1+1.20.1")
+    //goety前置声明
+    implementation fg.deobf("curse.maven:goety-586095:7436226")
+    //SmartBrainLib前置声明
+    implementation fg.deobf("curse.maven:smartbrainlib-661293:5654964")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -197,7 +244,12 @@ publishing {
     }
     repositories {
         maven {
-            url "file://${project.projectDir}/mcmodsrepo"
+            name = 'GeckoLib'
+            url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+            content {
+                includeGroupByRegex("software\\.bernie.*")
+                includeGroup("com.eliotlash.mclib")
+            }
         }
     }
 }

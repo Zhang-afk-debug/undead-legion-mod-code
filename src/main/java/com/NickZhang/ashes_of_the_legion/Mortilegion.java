@@ -4,48 +4,24 @@ import com.NickZhang.ashes_of_the_legion.client.HerobrineRenderer;
 import com.NickZhang.ashes_of_the_legion.entity.Herobrine;
 import com.NickZhang.ashes_of_the_legion.init.ModEntities;
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.player.PlayerRenderer;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.DisplayRenderer;
-import com.NickZhang.ashes_of_the_legion.init.ModEntities;
 
-@Mod(AshesOfTheLegionMod.MOD_ID)
-public class AshesOfTheLegionMod {
-    public static final String MOD_ID = "ashes_of_the_legion";
+@Mod(Mortilegion.MOD_ID)
+public class Mortilegion {
+    public static final String MOD_ID = "mortilegion";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public AshesOfTheLegionMod(FMLJavaModLoadingContext context)
+    public Mortilegion(FMLJavaModLoadingContext context)
     {
         MinecraftForge.EVENT_BUS.register(this);
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -61,9 +37,14 @@ public class AshesOfTheLegionMod {
             event.enqueueWork(() -> {EntityRenderers.register(ModEntities.HEROBRINE.get(), HerobrineRenderer::new);});
         }
     }
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ModEventBusEvents
     {
+        @SubscribeEvent
+        public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event)
+        {
+            event.registerEntityRenderer(ModEntities.HEROBRINE.get(), HerobrineRenderer::new);
+        }
         @SubscribeEvent
         public static void registerAttributes(EntityAttributeCreationEvent event)
         {

@@ -1,18 +1,16 @@
 package com.NickZhang.ashes_of_the_legion.init;
 
-import com.NickZhang.ashes_of_the_legion.AshesOfTheLegionMod;
+import com.NickZhang.ashes_of_the_legion.Mortilegion;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import javax.swing.*;
-
 public class ModItems
 {
     public static final DeferredRegister<Item> ITEM =
-            DeferredRegister.create(ForgeRegistries.ITEMS, AshesOfTheLegionMod.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.ITEMS, Mortilegion.MOD_ID);
     public static final RegistryObject<ForgeSpawnEggItem> HEROBRINE_SPAWN_EGG =
             ITEM.register("Herobrine_spawn_egg",
                     () -> new ForgeSpawnEggItem(ModEntities.HEROBRINE, 0xFFFFFF, 0x88AAFF,
