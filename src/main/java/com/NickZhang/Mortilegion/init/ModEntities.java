@@ -1,7 +1,7 @@
-package com.NickZhang.ashes_of_the_legion.init;
+package com.NickZhang.Mortilegion.init;
 
-import com.NickZhang.ashes_of_the_legion.Mortilegion;
-import com.NickZhang.ashes_of_the_legion.entity.Herobrine;
+import com.NickZhang.Mortilegion.Mortilegion;
+import com.NickZhang.Mortilegion.entity.Herobrine;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;

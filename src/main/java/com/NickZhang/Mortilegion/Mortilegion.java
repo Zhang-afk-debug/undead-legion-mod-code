@@ -1,8 +1,8 @@
-package com.NickZhang.ashes_of_the_legion;
+package com.NickZhang.Mortilegion;
 
-import com.NickZhang.ashes_of_the_legion.client.HerobrineRenderer;
-import com.NickZhang.ashes_of_the_legion.entity.Herobrine;
-import com.NickZhang.ashes_of_the_legion.init.ModEntities;
+import com.NickZhang.Mortilegion.client.HerobrineRenderer;
+import com.NickZhang.Mortilegion.entity.Herobrine;
+import com.NickZhang.Mortilegion.init.ModEntities;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;

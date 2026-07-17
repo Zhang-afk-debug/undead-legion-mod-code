@@ -1,6 +1,6 @@
-package com.NickZhang.ashes_of_the_legion.init;
+package com.NickZhang.Mortilegion.init;
 
-import com.NickZhang.ashes_of_the_legion.Mortilegion;
+import com.NickZhang.Mortilegion.Mortilegion;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;

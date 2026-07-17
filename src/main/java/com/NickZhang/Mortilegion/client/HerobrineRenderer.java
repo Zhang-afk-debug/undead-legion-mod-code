@@ -1,6 +1,6 @@
-package com.NickZhang.ashes_of_the_legion.client;
+package com.NickZhang.Mortilegion.client;
 
-import com.NickZhang.ashes_of_the_legion.entity.Herobrine;
+import com.NickZhang.Mortilegion.entity.Herobrine;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 

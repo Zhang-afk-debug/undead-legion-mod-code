@@ -1,4 +1,4 @@
-package com.NickZhang.ashes_of_the_legion;
+package com.NickZhang.Mortilegion;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
