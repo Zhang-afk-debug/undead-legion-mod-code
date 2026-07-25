@@ -1,6 +1,7 @@
 package com.NickZhang.Mortilegion;
 
 import com.NickZhang.Mortilegion.client.HerobrineRenderer;
+import com.NickZhang.Mortilegion.entity.BaseEntity;
 import com.NickZhang.Mortilegion.entity.Herobrine;
 import com.NickZhang.Mortilegion.init.ModEntities;
 import com.mojang.logging.LogUtils;
@@ -17,7 +18,8 @@ import org.slf4j.Logger;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 
 @Mod(Mortilegion.MOD_ID)
-public class Mortilegion {
+public class Mortilegion
+{
     public static final String MOD_ID = "mortilegion";
     private static final Logger LOGGER = LogUtils.getLogger();
 
@@ -26,29 +28,5 @@ public class Mortilegion {
         MinecraftForge.EVENT_BUS.register(this);
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModEntities.ENTITIES.register(modEventBus);
-    }
-
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-            event.enqueueWork(() -> {EntityRenderers.register(ModEntities.HEROBRINE.get(), HerobrineRenderer::new);});
-        }
-    }
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ModEventBusEvents
-    {
-        @SubscribeEvent
-        public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event)
-        {
-            event.registerEntityRenderer(ModEntities.HEROBRINE.get(), HerobrineRenderer::new);
-        }
-        @SubscribeEvent
-        public static void registerAttributes(EntityAttributeCreationEvent event)
-        {
-            event.put(ModEntities.HEROBRINE.get(), Herobrine.createAttributes().build());
-        }
     }
 }

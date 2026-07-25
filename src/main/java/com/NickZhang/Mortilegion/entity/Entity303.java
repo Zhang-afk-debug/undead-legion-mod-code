@@ -1,9 +1,6 @@
 package com.NickZhang.Mortilegion.entity;
 
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -13,20 +10,11 @@ public class Entity303 extends UndeadLegion implements GeoEntity
 {
     public Entity303(EntityType<? extends Monster> type, Level level)
     {
-        super(type, level);
+        super(type, level, 400.0, 50.0, 3.0, 0.0 ,0.8,
+                5.0, 10.0, 1.0);
 
     }
-    public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 1000.0)
-                .add(Attributes.FOLLOW_RANGE, 50.0)
-                .add(Attributes.ARMOR, 8.0)
-                .add(Attributes.ARMOR_TOUGHNESS, 3.0)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 7.5)
-                .add(Attributes.ATTACK_SPEED, 2.5)
-                .add(Attributes.ATTACK_DAMAGE, 20.0)
-                .add(Attributes.ATTACK_KNOCKBACK, 2.5);
-    }
+
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers)
     {

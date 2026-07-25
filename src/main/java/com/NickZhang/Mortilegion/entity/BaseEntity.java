@@ -4,13 +4,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.animal.TropicalFish;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 public abstract class BaseEntity extends Mob implements GeoEntity
@@ -24,7 +20,7 @@ public abstract class BaseEntity extends Mob implements GeoEntity
         super(type, level);
     }
 
-    public BaseEntity(EntityType<? extends Monster> type, Level level)
+    public BaseEntity(EntityType<? extends Mob> type, Level level)
     {
         super(type, level);
     }
