@@ -4,6 +4,7 @@ import com.NickZhang.Mortilegion.client.HerobrineRenderer;
 import com.NickZhang.Mortilegion.entity.BaseEntity;
 import com.NickZhang.Mortilegion.entity.Herobrine;
 import com.NickZhang.Mortilegion.init.ModEntities;
+import com.NickZhang.Mortilegion.init.ModEventBusEvents;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -28,5 +29,6 @@ public class Mortilegion
         MinecraftForge.EVENT_BUS.register(this);
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModEntities.ENTITIES.register(modEventBus);
+        modEventBus.register(ModEventBusEvents.class);
     }
 }

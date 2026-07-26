@@ -9,7 +9,8 @@ import software.bernie.geckolib.core.animation.*;
 
 public class Herobrine extends UndeadLegion implements GeoEntity
 {
-    public static AttributeSupplier.Builder createAttributes() {
+    public static AttributeSupplier.Builder createAttributes()
+    {
         return BaseEntity.createAttribute(1200.0, 50.0, 20.0,
                 0.0, 1.0, 1.0, 20.0, 1.0);
     }
