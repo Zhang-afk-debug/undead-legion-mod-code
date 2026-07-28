@@ -1,14 +1,20 @@
 package com.NickZhang.Mortilegion.entity;
 
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animation.*;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 
 public class Entity303 extends UndeadLegion implements GeoEntity
 {
-    public Entity303(EntityType<? extends Monster> type, Level level)
+    public static AttributeSupplier.Builder createAttributes()
+    {
+        return BaseEntity.createAttribute(400.0, 50.0, 3.0, 0.0, 0.8,
+                5.0, 10.0, 1.0);
+    }
+
+    public Entity303(EntityType<Entity303> type, Level level)
     {
         super(type, level, 400.0, 50.0, 3.0, 0.0 ,0.8,
                 5.0, 10.0, 1.0);
