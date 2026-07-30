@@ -6,18 +6,18 @@ import net.minecraft.world.level.Level;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animation.*;
 
-public class Herobrine extends UndeadLegion implements GeoEntity
+public class DreadLord extends UndeadLegion implements GeoEntity
 {
     public static AttributeSupplier.Builder createAttributes()
     {
-        return BaseEntity.createAttribute(1200.0, 64.0, 20.0,
-                20.0, 1.0, 4.0, 100.0, 3.0);
+        return BaseEntity.createAttribute(900.0, 56.0, 18.0,
+                18.0, 0.9, 3.8, 85.0, 2.5);
     }
 
-    public Herobrine(EntityType<Herobrine> type, Level level)
+    public DreadLord(EntityType<Herobrine> type, Level level)
     {
-        super(type, level, 1200.0, 64.0, 20.0,
-                20.0, 1.0, 4.0, 100.0, 3.0);
+        super(type, level, 900.0, 56.0, 18.0,
+                18.0, 0.9, 3.8, 85.0, 2.5);
 
     }
 

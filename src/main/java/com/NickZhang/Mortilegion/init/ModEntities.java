@@ -3,7 +3,6 @@ package com.NickZhang.Mortilegion.init;
 import com.NickZhang.Mortilegion.Mortilegion;
 import com.NickZhang.Mortilegion.entity.Entity303;
 import com.NickZhang.Mortilegion.entity.Herobrine;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
@@ -25,5 +24,7 @@ public class ModEntities
     public static final RegistryObject<EntityType<Herobrine>> HEROBRINE =
             registeryEntity("herobrine", Herobrine::new, 0.6f, 1.95f);
     public static final RegistryObject<EntityType<Entity303>> ENTITY303 =
+            registeryEntity("entity303", Entity303::new, 0.6f, 1.95f);
+    public static final RegistryObject<EntityType<Entity303>> DREADLORD =
             registeryEntity("entity303", Entity303::new, 0.6f, 1.95f);
 }

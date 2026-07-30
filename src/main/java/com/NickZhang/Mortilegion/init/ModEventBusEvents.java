@@ -29,7 +29,8 @@ public class ModEventBusEvents
 
     private static final List<EntityRegistration> ENTITIES = List.of(
             new EntityRegistration(ModEntities.HEROBRINE, Herobrine::createAttributes, HerobrineRenderer::new),
-            new EntityRegistration(ModEntities.ENTITY303, Entity303::createAttributes, Entity303Renderer::new)
+            new EntityRegistration(ModEntities.ENTITY303, Entity303::createAttributes, Entity303Renderer::new),
+            new EntityRegistration(ModEntities.DREADLORD, Entity303::createAttributes, Entity303Renderer::new)
     );
 
     @SubscribeEvent
