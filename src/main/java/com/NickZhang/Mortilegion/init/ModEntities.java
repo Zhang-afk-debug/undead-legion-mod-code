@@ -25,6 +25,4 @@ public class ModEntities
             registeryEntity("herobrine", Herobrine::new, 0.6f, 1.95f);
     public static final RegistryObject<EntityType<Entity303>> ENTITY303 =
             registeryEntity("entity303", Entity303::new, 0.6f, 1.95f);
-    public static final RegistryObject<EntityType<Entity303>> DREADLORD =
-            registeryEntity("entity303", Entity303::new, 0.6f, 1.95f);
 }
