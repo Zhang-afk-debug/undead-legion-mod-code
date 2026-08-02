@@ -8,6 +8,6 @@ public class HerobrineModel extends EntityModel<Herobrine>
     {
         super("geo/herobrine.geo.json",
                 "textures/entity/herobrine.png",
-                "animations/herobrine_walk.animation.json");
+                "animations/herobrine.animation.json");
     }
 }

@@ -1,12 +1,23 @@
 package com.NickZhang.Mortilegion.entity;
 
+import com.NickZhang.Mortilegion.entity.ai.HerobrineBrainConfig;
+import com.NickZhang.Mortilegion.entity.animations.HerobrineAnimationsManager;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.level.Level;
+import net.tslat.smartbrainlib.api.SmartBrainOwner;
+import net.tslat.smartbrainlib.api.core.BrainActivityGroup;
+import net.tslat.smartbrainlib.api.core.SmartBrainProvider;
+import net.tslat.smartbrainlib.api.core.sensor.ExtendedSensor;
+
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animation.*;
 
-public class Herobrine extends UndeadLegion implements GeoEntity
+import javax.annotation.Nonnull;
+import java.util.List;
+
+public class Herobrine extends UndeadLegion implements GeoEntity, SmartBrainOwner<Herobrine>
 {
     public static AttributeSupplier.Builder createAttributes()
     {
@@ -24,7 +35,35 @@ public class Herobrine extends UndeadLegion implements GeoEntity
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers)
     {
-        controllers.add(new AnimationController<>(this, "idle_controller", 0, event ->
-                event.setAndContinue(RawAnimation.begin().thenLoop("idle"))));
+        controllers.add(HerobrineAnimationsManager.createIdleControl(this));
+    }
+
+    @Override
+    protected Brain.Provider<?> brainProvider()
+    {
+        return new SmartBrainProvider<>(this);
+    }
+    @Override
+    @Nonnull
+    public List<ExtendedSensor<Herobrine>> getSensors() {
+        return HerobrineBrainConfig.sensors();
+    }
+
+    @Override
+    @Nonnull
+    public BrainActivityGroup<Herobrine> getCoreTasks() {
+        return HerobrineBrainConfig.coreTasks();
+    }
+
+    @Override
+    @Nonnull
+    public BrainActivityGroup<Herobrine> getIdleTasks() {
+        return HerobrineBrainConfig.idleTasks();
+    }
+
+    @Override
+    @Nonnull
+    public BrainActivityGroup<Herobrine> getFightTasks() {
+        return HerobrineBrainConfig.fightTasks();
     }
 }

@@ -147,10 +147,10 @@ repositories {
         }
     }
     maven {
-        name = "Curse Maven"
-        url = "https://www.cursemaven.com"
+        name = "TSLat SBL"
+        url = "https://dl.cloudsmith.io/public/tslat/sbl/maven/"
         content {
-            includeGroup "curse.maven"
+            includeGroup("net.tslat.smartbrainlib")
         }
     }
 
@@ -190,7 +190,7 @@ dependencies {
     //goety前置声明
     implementation fg.deobf("curse.maven:goety-586095:7436226")
     //SmartBrainLib前置声明
-    implementation fg.deobf("curse.maven:smartbrainlib-661293:5654964")
+    implementation fg.deobf("net.tslat.smartbrainlib:SmartBrainLib-forge-1.20.1:1.15")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -242,16 +242,12 @@ publishing {
             artifact jar
         }
     }
-    repositories {
-        maven {
-            name = 'GeckoLib'
-            url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-            content {
-                includeGroupByRegex("software\\.bernie.*")
-                includeGroup("com.eliotlash.mclib")
-            }
-        }
-    }
+    // 如果你需要把自己的 mod 发布到某个 maven 仓库，在这里配置发布目标仓库
+    // repositories {
+    //     maven {
+    //         url = uri("...")
+    //     }
+    // }
 }
 
 tasks.withType(JavaCompile).configureEach {

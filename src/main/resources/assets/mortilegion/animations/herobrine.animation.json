@@ -362,6 +362,9 @@
 					}
 				}
 			}
+		},
+		"idle_4": {
+			"loop": "hold_on_last_frame"
 		}
 	}
 }
