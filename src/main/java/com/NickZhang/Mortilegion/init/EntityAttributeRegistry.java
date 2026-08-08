@@ -17,11 +17,11 @@ public class EntityAttributeRegistry
     public static void register(Supplier<EntityType<? extends LivingEntity>> entityType,
                                 double health, double followRange, double armor, double armorToughness,
                                 double knockbackResistance, double attackSpeed, double attackDamage,
-                                double attackKnockback)
+                                double attackKnockback, double movementSpeed)
     {
         ATTRIBUTES.put(entityType, () -> BaseEntity.createAttribute(
                 health, followRange, armor, armorToughness, knockbackResistance, attackSpeed, attackDamage,
-                attackKnockback));
+                attackKnockback, movementSpeed));
     }
     public static void registerAll(EntityAttributeCreationEvent event)
     {

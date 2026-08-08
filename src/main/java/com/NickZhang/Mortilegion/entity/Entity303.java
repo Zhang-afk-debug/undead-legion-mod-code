@@ -11,13 +11,13 @@ public class Entity303 extends UndeadLegion implements GeoEntity
     public static AttributeSupplier.Builder createAttributes()
     {
         return BaseEntity.createAttribute(400.0, 50.0, 3.0, 0.0, 0.8,
-                5.0, 10.0, 1.0);
+                5.0, 10.0, 1.0, 0.3);
     }
 
     public Entity303(EntityType<Entity303> type, Level level)
     {
         super(type, level, 400.0, 50.0, 3.0, 0.0 ,0.8,
-                5.0, 10.0, 1.0);
+                5.0, 10.0, 1.0, 0.3);
 
     }
 
