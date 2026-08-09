@@ -4,6 +4,7 @@ import com.NickZhang.Mortilegion.entity.Herobrine;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.AnimationProcessor.QueuedAnimation;
+import software.bernie.geckolib.core.object.PlayState;
 
 import java.util.Objects;
 import java.util.Random;
@@ -18,9 +19,9 @@ public class HerobrineAnimationsManager{
 
     public static long lastSwitchTime = 0;
 
-    public static AnimationController<Herobrine> createIdleControl(Herobrine entity)
+    public static AnimationController<Herobrine> createIdleControl(Herobrine entity) //随机播放走路动画
     {
-        return new AnimationController<>(entity, "idle_control", 8, event ->
+        return new AnimationController<>(entity, "idle_control", 0, event ->
         {
 
                 long currentTime = System.currentTimeMillis();
@@ -40,5 +41,20 @@ public class HerobrineAnimationsManager{
             RawAnimation current = event.getController().getCurrentRawAnimation();
             return event.setAndContinue(Objects.requireNonNullElse(current, idle_4));
         });
+    }
+
+    public static AnimationController<Herobrine> createWalkControl(Herobrine entity)
+    {
+        return new AnimationController<>(entity, "walk_control", 0, state ->
+        {
+            if (entity.getDeltaMovement().horizontalDistanceSqr() > 0.01)
+            {
+                state.setAnimation(RawAnimation.begin().then("walk", Animation.LoopType.LOOP));
+
+                return PlayState.CONTINUE;
+            }
+
+            return PlayState.STOP;
+        }).setAnimationSpeed(1.3f);
     }
 }

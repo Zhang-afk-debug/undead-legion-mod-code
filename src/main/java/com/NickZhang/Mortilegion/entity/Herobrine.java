@@ -41,19 +41,20 @@ public class Herobrine extends UndeadLegion implements GeoEntity, SmartBrainOwne
                 20.0, 1.0, 4.0, 100.0, 3.0, 0.2);
         this.setNoAi(false);
 
-        if (this.navigation instanceof GroundPathNavigation)
+        if (this.navigation instanceof GroundPathNavigation) //水下ai
         {
             this.navigation.setCanFloat(true);
         }
     }
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers)
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) //动画控制器
     {
         controllers.add(HerobrineAnimationsManager.createIdleControl(this));
+        controllers.add(HerobrineAnimationsManager.createWalkControl(this));
     }
 
-    @Override
+    @Override //ai控制器
     protected Brain.@NotNull Provider<?> brainProvider()
     {
         return new SmartBrainProvider<>(this);
@@ -93,9 +94,13 @@ public class Herobrine extends UndeadLegion implements GeoEntity, SmartBrainOwne
     public void tick()
     {
         super.tick();
-        if (this.isInWaterOrBubble())
+        if (this.isInWaterOrBubble()) //免疫溺水
         {
             this.setAirSupply(this.getMaxAirSupply());
+        }
+        if (this.getTicksFrozen() > 0) //免疫冰冻
+        {
+            this.setTicksFrozen(0);
         }
         if (!this.level().isClientSide())
         {
@@ -106,16 +111,20 @@ public class Herobrine extends UndeadLegion implements GeoEntity, SmartBrainOwne
             }
             this.brain.tick((ServerLevel) this.level(), this);
         }
-        Player nearestPlayer = this.level().getNearestPlayer(this, 50.0);
+        Player nearestPlayer = this.level().getNearestPlayer(this, 50.0); //确定伤害目标
         if (nearestPlayer != null && !nearestPlayer.isCreative() && !nearestPlayer.isSpectator())
         {
             this.setTarget(nearestPlayer);
         }
         LivingEntity target = this.getTarget();
-        if (target != null && target.isAlive()) {
-            if (this.distanceToSqr(target) > 4.0) {
+        if (target != null && target.isAlive())
+        {
+            if (this.distanceToSqr(target) > 4.0)
+            {
                 this.getNavigation().moveTo(target, 1.0);
-            } else {
+            }
+            else
+            {
                 this.doHurtTarget(target);
             }
         }
