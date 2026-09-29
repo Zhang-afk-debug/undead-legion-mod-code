@@ -1,7 +1,7 @@
-# Ashes of the Legion
+# Mortilegion
 
 一个 Minecraft 模组，添加不死军团相关的生物、Boss、剧情和机制。  
-[Ashes Of the Legion] | [1.20.1] | [forge47.1]
+[1.20.1] | [forge47.1]
 
 ## 目录
 
@@ -15,3 +15,5 @@
 | Minecraft | 1.20.1 | 请与模组目标版本一致 |
 | Git | 任意 | 用于克隆仓库 |
 | 网络 | 可用 | Gradle 首次构建会下载大量依赖（约 500MB+） |
+
+# 模组仍在开发中……
