@@ -8,8 +8,10 @@ import net.minecraft.nbt.NbtOps;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -31,14 +33,21 @@ public class Herobrine extends UndeadLegion implements GeoEntity, SmartBrainOwne
 
     public static AttributeSupplier.Builder createAttributes()
     {
-        return BaseEntity.createAttribute(1200.0, 64.0, 20.0,
-                20.0, 1.0, 4.0, 100.0, 3.0, 0.3);
+        return Mob.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 1200.0)
+                .add(Attributes.FOLLOW_RANGE, 64.0)
+                .add(Attributes.ARMOR, 20.0)
+                .add(Attributes.ARMOR_TOUGHNESS, 20.0)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 1.0)
+                .add(Attributes.ATTACK_SPEED, 4.0)
+                .add(Attributes.ATTACK_DAMAGE, 100.0)
+                .add(Attributes.ATTACK_KNOCKBACK, 3.0)
+                .add(Attributes.MOVEMENT_SPEED, 0.3);
     }
 
     public Herobrine(EntityType<Herobrine> type, Level level)
     {
-        super(type, level, 1200.0, 64.0, 20.0,
-                20.0, 1.0, 4.0, 100.0, 3.0, 0.2);
+        super(type, level);
         this.setNoAi(false);
 
         if (this.navigation instanceof GroundPathNavigation) //水下ai

@@ -1,7 +1,6 @@
 package com.NickZhang.Mortilegion.entity;
 
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.level.Level;
 
@@ -18,11 +17,8 @@ public abstract class UndeadLegion extends BaseEntity
     {
         return legionLevel;
     }
-    public UndeadLegion(EntityType<? extends PathfinderMob> type, Level level, double health, double followRange,
-                        double armor, double armorToughness, double knockbackResistance,
-                        double attackSpeed, double attackDamage, double attackKnockback, double movementSpeed)
+    public UndeadLegion(EntityType<? extends PathfinderMob> type, Level level)
     {
-        super(type, level, health, followRange, armor, armorToughness,
-                knockbackResistance, attackSpeed, attackDamage, attackKnockback, movementSpeed);
+        super(type, level);
     }
 }
